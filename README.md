@@ -4,9 +4,14 @@
 
 ### Detect AI-Generated Audio with Machine Learning
 
-[![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![Flask](https://img.shields.io/badge/Flask-3.0.2-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com)
 [![Librosa](https://img.shields.io/badge/Librosa-0.10.1-FF6B35?style=for-the-badge)](https://librosa.org)
+[![Railway](https://img.shields.io/badge/Deployed%20on-Railway-0B0D0E?style=for-the-badge&logo=railway&logoColor=white)](https://deepfake-audio-detection-production.up.railway.app)
+
+## 🌐 Live Demo
+
+### 👉 [deepfake-audio-detection-production.up.railway.app](https://deepfake-audio-detection-production.up.railway.app)
 
 </div>
 
@@ -37,6 +42,8 @@ Audio-Deepfake-Detection/
 ├── app.py                  # Main Flask application (routes, feature extraction, prediction)
 ├── dataset.csv             # Pre-labeled audio feature dataset (real vs deepfake)
 ├── requirements.txt        # Python dependencies
+├── Procfile                # Deployment start command (gunicorn)
+├── runtime.txt             # Python version pin (3.11)
 ├── README.md               # Project documentation
 │
 ├── templates/
@@ -58,25 +65,27 @@ Audio-Deepfake-Detection/
 
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
-| **Backend** | Python 3.9+ | Core runtime |
+| **Backend** | Python 3.11 | Core runtime |
 | **Web Framework** | Flask 3.0.2 | HTTP server & routing |
+| **WSGI Server** | Gunicorn 21.2.0 | Production server |
 | **Audio Processing** | Librosa 0.10.1 | Feature extraction from audio |
 | **Resampling** | Resampy 0.4.2 | Audio resampling support |
 | **Audio I/O** | SoundFile 0.12.1 | Audio file reading backend |
-| **Data Handling** | Pandas 1.5.3 | Dataset loading and row access |
-| **Numerical Computing** | NumPy 1.24.3 | Feature vectors & distance calculation |
+| **Data Handling** | Pandas 2.1.4 | Dataset loading and row access |
+| **Numerical Computing** | NumPy 1.26.4 | Feature vectors & distance calculation |
 | **Frontend** | HTML5 + TailwindCSS | Responsive dark-mode UI (via CDN) |
 | **Templating** | Jinja2 3.1.3 | Server-side HTML rendering |
+| **Hosting** | Railway.app | Cloud deployment platform |
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Getting Started (Run Locally)
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/Audio-Deepfake-Detection.git
-cd Audio-Deepfake-Detection
+git clone https://github.com/Bisw-ajit/Deepfake-Audio-Detection.git
+cd Deepfake-Audio-Detection
 ```
 
 ### 2. Create a Virtual Environment
@@ -100,11 +109,6 @@ python app.py
 ```
 
 Open your browser and go to: **http://127.0.0.1:5000**
-
-> **Note:** If port 5000 is in use (common on macOS due to AirPlay Receiver), run on a different port:
-> ```bash
-> flask run --port 5001
-> ```
 
 ---
 
@@ -179,4 +183,6 @@ This project is open source. Feel free to use and modify it for educational purp
 
 <div align="center">
 Made with ❤️ for Audio Intelligence Research
+<br><br>
+🌐 <strong>Live at: <a href="https://deepfake-audio-detection-production.up.railway.app">deepfake-audio-detection-production.up.railway.app</a></strong>
 </div>
