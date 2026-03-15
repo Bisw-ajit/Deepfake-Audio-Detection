@@ -2,19 +2,19 @@ from flask import Flask, render_template, request
 import numpy as np
 import pandas as pd
 import librosa
+import os
 
 app = Flask(__name__)
 
 # Load dataset and configurations
-dataset = pd.read_csv('dataset.csv')
+base_dir = os.path.dirname(os.path.abspath(__file__))
+dataset = pd.read_csv(os.path.join(base_dir, 'dataset.csv'))
 num_mfcc = 100
 num_mels = 128
 num_chroma = 50
 
 @app.route('/', methods=['GET', 'POST'])
 def model():
-    background_image = "/static/image5.jpg"
-    loader_visible = False
 
     if request.method == 'POST':
         selected_file = request.files['audio_file']
@@ -48,9 +48,9 @@ def model():
             file_label = f"File: {file_name}"
             result_label = f"Result: Real with {closest_match_prob_percentage}%"
 
-        return render_template('model.html', file_label=file_label, result_label=result_label, background_image=background_image, loader_visible=loader_visible)
+        return render_template('model.html', file_label=file_label, result_label=result_label)
     else:
-        return render_template('model.html', background_image=background_image, loader_visible=loader_visible)
+        return render_template('model.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
